@@ -8,12 +8,15 @@ Tool of Database version control
 
 ## Flyway usage
 > put ./sql to ./flyway/sql 
+
 > put ./conf to ./flyway/conf
+
 - `migrate` Migrates the schema to the latest version. 
     ```shell
     docker-compose run flyway migrate
     ```
 - `clean` Drops all objects in the configured schemas.
+> IMPORTANT!!! this will clean your database!
     ```shell
     docker-compose run flyway clean 
     ```
