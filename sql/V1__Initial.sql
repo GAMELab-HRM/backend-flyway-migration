@@ -69,7 +69,8 @@ CREATE TABLE raw_data(
    ws_10_raw BYTEA,
    mrs_raw BYTEA,
    rdc_raw BYTEA,
-   hh_raw BYTEA
+   hh_raw BYTEA,
+   FOREIGN KEY(id) REFERENCES patient_info(id)
 );
 
 CREATE TABLE time_record(
