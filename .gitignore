@@ -1,2 +1,5 @@
 /docker-compose.yml
 /sql_example.txt
+/create_uuid.py
+/create_bytea.py 
+/test_db.py
