@@ -1,7 +1,7 @@
 -- JUST TEST
 CREATE TABLE patient_info(
    record_id UUID PRIMARY KEY NOT NULL UNIQUE,
-   patient_id CHAR(10) NOT NULL UNIQUE,
+   patient_id CHAR(20) NOT NULL UNIQUE,
    sensor_num INT NOT NULL
 );
 
