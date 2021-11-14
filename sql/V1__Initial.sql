@@ -23,7 +23,7 @@ CREATE TABLE wet_swallows_10(
    doctor_id INT NOT NULL,
    pressure_max INT,
    pressure_min INT ,
-   FOREIGN KEY(record_id) REFERENCES patient_info(record_id),
+   FOREIGN KEY(record_id) REFERENCES patient_info(record_id) ON DELETE CASCADE,
    FOREIGN KEY(doctor_id) REFERENCES doctor_info(doctor_id)
 );
 
@@ -40,7 +40,7 @@ CREATE TABLE mrs(
    mrs_result TEXT,
    pressure_max INT,
    pressure_min INT,
-   FOREIGN KEY(record_id) REFERENCES patient_info(record_id),
+   FOREIGN KEY(record_id) REFERENCES patient_info(record_id) ON DELETE CASCADE,
    FOREIGN KEY(doctor_id) REFERENCES doctor_info(doctor_id)
 );
 
@@ -57,7 +57,7 @@ CREATE TABLE hiatal_hernia(
    pressure_max INT,
    pressure_min INT,
    black_line INT,
-   FOREIGN KEY(record_id) REFERENCES patient_info(record_id),
+   FOREIGN KEY(record_id) REFERENCES patient_info(record_id) ON DELETE CASCADE,
    FOREIGN KEY(doctor_id) REFERENCES doctor_info(doctor_id)
 );
 
@@ -69,7 +69,7 @@ CREATE TABLE raw_data(
    mrs_raw BYTEA,
    rdc_raw BYTEA,
    hh_raw BYTEA,
-   FOREIGN KEY(record_id) REFERENCES patient_info(record_id)
+   FOREIGN KEY(record_id) REFERENCES patient_info(record_id) ON DELETE CASCADE
 );
 
 CREATE TABLE time_record(
@@ -77,6 +77,6 @@ CREATE TABLE time_record(
    record_id UUID NOT NULL,
    doctor_id INT NOT NULL,
    last_update timestamptz,
-   FOREIGN KEY(record_id) REFERENCES patient_info(record_id),
+   FOREIGN KEY(record_id) REFERENCES patient_info(record_id) ON DELETE CASCADE,
    FOREIGN KEY(doctor_id) REFERENCES doctor_info(doctor_id)
 );
