@@ -2,7 +2,7 @@
 CREATE TABLE patient_info(
    record_id UUID PRIMARY KEY NOT NULL UNIQUE,
    patient_id TEXT NOT NULL UNIQUE,
-   sensor_num INT NOT NULL
+   catheter_type INT
 );
 
 CREATE TABLE doctor_info(
@@ -20,6 +20,7 @@ CREATE TABLE wet_swallows_10(
    ws_result TEXT,
    irp4s TEXT[],
    dls TEXT[],
+   breaks TEXT[],
    doctor_id INT NOT NULL,
    pressure_max INT,
    pressure_min INT ,
@@ -59,10 +60,15 @@ CREATE TABLE raw_data(
    index SERIAL PRIMARY KEY,
    filename TEXT NOT NULL,
    record_id UUID NOT NULL,
+   all_raw BYTEA,
    ws_10_raw BYTEA,
+   ws_10_index INT[],
    mrs_raw BYTEA,
+   mrs_index INT[],
    rdc_raw BYTEA,
+   rdc_index INT[],
    hh_raw BYTEA,
+   hh_index INT[],
    FOREIGN KEY(record_id) REFERENCES patient_info(record_id) ON DELETE CASCADE
 );
 
@@ -79,3 +85,4 @@ CREATE TABLE testing(
    index SERIAL PRIMARY KEY,
    draw_info JSONB
 );
+
