@@ -1,0 +1,30 @@
+version: "3.7"
+
+networks:
+    pg-backend:
+  
+services:
+    postgres:
+        image: docker.pkg.github.com/gamelab-hrm/postgres/postgres:0.0.1
+        expose:
+            - 5432
+        ports:
+            - 127.0.0.1:5432:5432
+        networks:
+            - pg-backend
+        volumes:
+            - hrm-testing2:/var/lib/postgresql/data
+            #- postgres-data:/var/lib/postgresql/data
+    flyway:
+        image: flyway-migration-v4
+        restart: on-failure
+        networks:
+          - pg-backend
+        depends_on:
+          - postgres 
+        
+
+volumes:
+    #postgres-data:
+    hrm-testing2:
+        external: true
