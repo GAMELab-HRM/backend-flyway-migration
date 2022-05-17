@@ -13,10 +13,10 @@ services:
         networks:
             - pg-backend
         volumes:
-            - hrm-testing2:/var/lib/postgresql/data
+            - hrm_backup_0510:/var/lib/postgresql/data
             #- postgres-data:/var/lib/postgresql/data
     flyway:
-        image: flyway-migration-v4
+        image: flyway-migration-v4.1
         restart: on-failure
         networks:
           - pg-backend
@@ -26,5 +26,5 @@ services:
 
 volumes:
     #postgres-data:
-    hrm-testing2:
+    hrm_backup_0510:
         external: true
